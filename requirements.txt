@@ -1,0 +1,11 @@
+jupyter
+pandas
+pyarrow
+sqlalchemy
+psycopg2-binary
+click
+google-auth-oauthlib
+pandas-gbq
+prefect
+prefect-sqlalchemy
+pre-commit
