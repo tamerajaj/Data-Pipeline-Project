@@ -165,3 +165,4 @@ cython_debug/
 # local data folder
 /src/local-ingestion/data/
 .isort.cfg
+setup.cfg
