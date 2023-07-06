@@ -9,3 +9,5 @@ pandas-gbq
 prefect
 prefect-sqlalchemy
 pre-commit
+python-dotenv
+google-cloud-storage
