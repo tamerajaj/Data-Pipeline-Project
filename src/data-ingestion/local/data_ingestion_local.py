@@ -41,7 +41,7 @@ def data_ingestion(year, months, color):
         print("Loading data from URL...")
         df_taxi = pd.read_parquet(url)
         print("Saving data locally...")
-        df_taxi.to_parquet(f"data/{file_name}", index=False)
+        df_taxi.to_parquet(f"../../data/{file_name}", index=False)
         print("Successfully saved the data!")
 
 
