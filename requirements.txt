@@ -11,3 +11,5 @@ prefect-sqlalchemy
 pre-commit
 python-dotenv
 google-cloud-storage
+pyspark==3.4.0
+google-cloud-dataproc
