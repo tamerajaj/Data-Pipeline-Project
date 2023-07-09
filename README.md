@@ -4,3 +4,21 @@ Please do not fork this repository, but use this repository as a template for yo
 
 ## Project for today
 The task for today you can find in the [data-pipeline-project.md](data-pipeline-project.md) file.
+
+## Setup:
+```bash
+pyenv local 3.11.3
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+```
+
+## Quick guide:
+
+### ETL pipelines:
+1.  Local: In [./src/local-etl](./src/local-etl)
+2.  Cloud: In [./src/cloud-etl](./src/cloud-etl)
+
+# ELT pipelines:
+In [.src/ELT](./src/ELT)
