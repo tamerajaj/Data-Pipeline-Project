@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: src_green_taxi
+    schema: green_taxi_raw_merged
+    tables:
+      - name: merged_tripdata_2021

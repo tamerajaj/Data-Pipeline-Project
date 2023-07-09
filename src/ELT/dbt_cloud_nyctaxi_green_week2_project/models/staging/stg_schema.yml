@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: stg_green_taxi
+    description: staging model for yellow taxi data in NYC
+    columns:
+      - name: vendor_id
+        description: vendor id of the taxi company
+        tests:
+          - not_null
+      - name: pickup_datetime
+        description: pickup datetime of the taxi ride
+        tests:
+          - not_null
+      - name: dropoff_datetime
+        description: dropoff datetime of the taxi ride
+        tests:
+          - not_null
+      - name: passenger_count
+        description: number of passengers
+      - name: trip_distance
+        description: distance of the taxi ride
+        tests:
+          - not_null
+      - name: rate_code_id
+        description: rate code id
+      - name: store_and_fwd_flag
+        description: store and forward flag
+        tests:
+          - accepted_values:
+              values: ["Y", "N"]
+      - name: pickup_location_id
+        description: pickup location id
+        tests:
+          - not_null
+      - name: dropoff_location_id
+        description: dropoff location id
+        tests:
+          - not_null
+      # - name: payment_type
+      #   description: payment type
+      #   tests:
+          # - not_null
+      - name: fare_amount
+        description: fare amount
+        tests:
+          - not_null
+      - name: extra
+        description: extra
+        tests:
+          - not_null
+      - name: mta_tax
+        description: mta tax
+        tests:
+          - not_null
+      - name: tip_amount
+        description: tip amount
+        tests:
+          - not_null
+      - name: tolls_amount
+        description: tolls amount
+        tests:
+          - not_null
+      - name: improvement_surcharge
+        description: improvement surcharge
+        tests:
+          - not_null
+      - name: total_amount
+        description: total amount
+        tests:
+          - not_null
