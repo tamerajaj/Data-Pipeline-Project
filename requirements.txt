@@ -9,3 +9,10 @@ pandas-gbq
 prefect
 prefect-sqlalchemy
 pre-commit
+python-dotenv
+google-cloud-storage
+pyspark==3.4.0
+google-cloud-dataproc
+dbt-core
+dbt-postgres
+dbt-bigquery
