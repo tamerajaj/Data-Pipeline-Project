@@ -34,19 +34,22 @@ def data_ingestion(year, months, color):
         return
 
     for month in range(start_month, end_month + 1):
-        url = (
-            f"https://d37ci6vzurychx.cloudfront.net/trip-data/"
-            f"{color}_tripdata_{year}-{month:02d}.parquet"
-        )
-        file_name = f"{color}_tripdata_{year}-{month:02d}.parquet"
+        data_ingest_by_month(color, month, year)
 
-        print("Loading data from URL...")
-        df_taxi = pd.read_parquet(url)
-        print("Saving data locally...")
-        current_directory = os.path.dirname(os.path.abspath(__file__))
-        source_file_path = os.path.join(current_directory, f"../data/{file_name}")
-        df_taxi.to_parquet(source_file_path, index=False)
-        print("Successfully saved the data!")
+
+def data_ingest_by_month(color, month, year):
+    url = (
+        f"https://d37ci6vzurychx.cloudfront.net/trip-data/"
+        f"{color}_tripdata_{year}-{month:02d}.parquet"
+    )
+    file_name = f"{color}_tripdata_{year}-{month:02d}.parquet"
+    print("Loading data from URL...")
+    df_taxi = pd.read_parquet(url)
+    print("Saving data locally...")
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    source_file_path = os.path.join(current_directory, f"../data/{file_name}")
+    df_taxi.to_parquet(source_file_path, index=False)
+    print("Successfully saved the data!")
 
 
 if __name__ == "__main__":
