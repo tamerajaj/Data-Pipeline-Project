@@ -16,3 +16,4 @@ google-cloud-dataproc
 dbt-core
 dbt-postgres
 dbt-bigquery
+prefect
