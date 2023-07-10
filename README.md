@@ -17,8 +17,8 @@ pip install -r requirements.txt
 ## Quick guide:
 
 ### ETL pipelines:
-1.  Local: In [./src/local-etl](./src/local-etl)
-2.  Cloud: In [./src/cloud-etl](./src/cloud-etl)
+1.  Local: In [./src/local-etl/etl_local_main.py](./src/local-etl/etl_local_main.py)
+2.  Cloud: In [./src/cloud-etl/etl_cloud_main.py](./src/cloud-etl/etl_cloud_main.py)
 
 ### ELT pipelines:
 In [.src/ELT](./src/ELT)
