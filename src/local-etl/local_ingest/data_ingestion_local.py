@@ -1,33 +1,25 @@
 import os
 
-import click
 import pandas as pd
+from prefect import task
 
 
-@click.command()
-@click.option("--year", default=2021, help="Year to download")
-@click.option("--months", default="1-3", help="Range of months to download (e.g., 1-3)")
-@click.option(
-    "--color",
-    default="green",
-    help="Color of taxi data to download (e.g., yellow, green)",
-)
-def data_ingestion(year, months, color):
+def data_ingestion(year=2021, months="1-3", color="green"):
     try:
         start_month, end_month = map(int, months.split("-"))
     except ValueError:
-        click.echo(
+        print(
             "Invalid month range format. Please provide a valid range in the "
             "format 'start-end'."
         )
         return
 
     if start_month < 1 or start_month > 12 or end_month < 1 or end_month > 12:
-        click.echo("Invalid month values. Month values should be between 1 " "and 12.")
+        print("Invalid month values. Month values should be between 1 " "and 12.")
         return
 
     if end_month < start_month:
-        click.echo(
+        print(
             "Invalid month range. The second month should be larger or equal "
             "to the first month."
         )
@@ -37,6 +29,7 @@ def data_ingestion(year, months, color):
         data_ingest_by_month(color, month, year)
 
 
+@task(name="Data Ingestion Task - per month", log_prints=True)
 def data_ingest_by_month(color, month, year):
     url = (
         f"https://d37ci6vzurychx.cloudfront.net/trip-data/"
