@@ -22,3 +22,6 @@ pip install -r requirements.txt
 
 ### ELT pipelines:
 In [.src/ELT](./src/ELT)
+
+## Prefect:
+Implemented for local ETL.
