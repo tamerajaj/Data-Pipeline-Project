@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import os
 import re
 
 from google.cloud import dataproc_v1, storage
@@ -11,7 +12,10 @@ def upload_local_file_to_bucket(project, bucket_name, source_file, destination_f
     client = storage.Client(project=project)
     bucket = client.get_bucket(bucket_name)
     blob = bucket.blob(destination_file)
-    blob.upload_from_filename(source_file)
+
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    source_file_path = os.path.join(current_directory, source_file)
+    blob.upload_from_filename(source_file_path)
 
 
 def submit_job_to_cluster(
@@ -25,9 +29,7 @@ def submit_job_to_cluster(
     color,
     output_dataset,
 ):
-    upload_local_file_to_bucket(
-        project_id, gcs_bucket, pyspark_file, f"code/{pyspark_file}"
-    )
+    upload_local_file_to_bucket(project_id, gcs_bucket, pyspark_file, f"{pyspark_file}")
 
     job_client = dataproc_v1.JobControllerClient(
         client_options={"api_endpoint": f"{region}-dataproc.googleapis.com:443"}

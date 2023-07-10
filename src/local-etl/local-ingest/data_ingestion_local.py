@@ -1,3 +1,5 @@
+import os
+
 import click
 import pandas as pd
 
@@ -41,7 +43,9 @@ def data_ingestion(year, months, color):
         print("Loading data from URL...")
         df_taxi = pd.read_parquet(url)
         print("Saving data locally...")
-        df_taxi.to_parquet(f"../../data/{file_name}", index=False)
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        source_file_path = os.path.join(current_directory, f"../data/{file_name}")
+        df_taxi.to_parquet(source_file_path, index=False)
         print("Successfully saved the data!")
 
 

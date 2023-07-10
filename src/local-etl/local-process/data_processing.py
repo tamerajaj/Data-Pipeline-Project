@@ -1,3 +1,5 @@
+import os
+
 import click
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
@@ -37,9 +39,14 @@ def run_data_processing(year, months, color):
         return
 
     for month in range(start_month, end_month + 1):
-        input_path = f"../data/{color}_tripdata_{year}-{month:02d}.parquet/"
-        output_path = (
-            f"../data/output/{color}_tripdata_{year}-{month:02d}_daily_revenue"
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+
+        input_path = os.path.join(
+            current_directory, f"../data/{color}_tripdata_{year}-{month:02d}.parquet/"
+        )
+        output_path = os.path.join(
+            current_directory,
+            f"../data/output/{color}_tripdata_{year}-{month:02d}_daily_revenue",
         )
 
         df = spark.read.parquet(input_path)
